@@ -1,7 +1,7 @@
 const ghpages = require("gh-pages");
 
 ghpages.publish(
-  "__sapper__/export/<your-app-name>",
+  "__sapper__/export/tw-editor",
   {
     branch: "main",
     repo: "https://github.com/00185fm/tw-editor.git",
