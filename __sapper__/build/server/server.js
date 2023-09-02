@@ -8397,14 +8397,17 @@ function serve({ prefix, pathname, cache_control }) {
 function noop() { }
 
 const { PORT, NODE_ENV } = process.env;
-const dev = NODE_ENV === 'development';
+const dev = NODE_ENV === "development";
 
-polka__default["default"]() // You can also use Express
-	.use(
-		compression__default["default"]({ threshold: 0 }),
-		sirv__default["default"]('static', { dev }),
-		middleware()
-	)
-	.listen(PORT, err => {
-		if (err) console.log('error', err);
-	});
+const url = dev ? "/" : "tw-editor"; // <<-
+
+polka__default["default"]()
+  .use(
+    url, // <<-
+    compression__default["default"]({ threshold: 0 }),
+    sirv__default["default"]("static", { dev }),
+    middleware()
+  )
+  .listen(PORT, (err) => {
+    if (err) console.log("error", err);
+  });

@@ -1,23 +1,25 @@
 {
-  "name": "sapper-tw-editor",
+  "name": "tw-editor",
   "description": "sapper application for tailwind editor component, generate tailwind code",
   "version": "0.0.1",
   "scripts": {
     "dev": "sapper dev",
     "build": "sapper build --legacy",
-    "export": "sapper export --legacy",
+    "export": "sapper export --basepath tw-editor --legacy",
     "start": "node __sapper__/build",
     "cy:run": "cypress run",
     "cy:open": "cypress open",
+    "deploy": "npm run export && node ./scripts/gh-pages.js",
     "test": "run-p --race dev cy:run",
     "watch:tailwind": "postcss static/tailwind.css -o static/index.css -w",
     "build:tailwind": "NODE_ENV=production postcss static/tailwind.css -o static/index.css"
   },
   "dependencies": {
+    "compression": "^1.7.1",
+    "gh-pages": "^6.0.0",
     "highlight.js": "^10.1.2",
     "polka": "next",
     "sirv": "^1.0.0",
-    "compression": "^1.7.1",
     "tailwindcss": "^1.7.6"
   },
   "devDependencies": {
